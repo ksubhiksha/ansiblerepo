@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: httpd created
+    yum:
+      name: httpd
+      state: present
+
+  - name: service started
+    service:
+        name: httpd
+        state: started
+  - name: file tranfer
+    copy:
+      src: /etc/ansible/index.html
+      dest: /var/www/html/index.html
