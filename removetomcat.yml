@@ -1,0 +1,13 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: stopped tomcat service
+    shell: nohup /usr/local/apache-tomcat-9.0.85/bin/shutdown.sh
+  - name: delete tomcat file
+    file:
+     path: /usr/local/apache-tomcat-9.0.85.tar.gz
+     state: absent
+  - name: delete tomcat file
+    file:
+     path: /usr/local/apache-tomcat-9.0.85
+     state: absent
